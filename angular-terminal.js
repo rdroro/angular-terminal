@@ -7,13 +7,15 @@ angular
 			// define namespace
 			var namespace = 'terminal.' + (attrs.angularTerminal || 'default'),
 				t;
-
+				var e = $('#'+element[0].id);
 			// initialize terminal object
-			t = element.terminal(function(input, terminal) {
+			t = e.terminal(function(input, terminal) {
 				// user input commands
 				$rootScope.$emit(namespace, input, terminal);
 			}, {
-   				greetings: attrs.greetings || ''
+   				greetings: attrs.greetings || '',
+				height: 200,
+				prompt: attrs.prompt || '$ '
 			});
 
 			// receiving echo commands\
